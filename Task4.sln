@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task4", "Task4\Task4.csproj", "{F978AD61-8726-4C5A-80ED-038D02A22515}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatcherService", "FileWatcherService\FileWatcherService.csproj", "{F95AAD52-B9A1-4F03-B606-5E771D536E3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F978AD61-8726-4C5A-80ED-038D02A22515}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F978AD61-8726-4C5A-80ED-038D02A22515}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F978AD61-8726-4C5A-80ED-038D02A22515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F95AAD52-B9A1-4F03-B606-5E771D536E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F95AAD52-B9A1-4F03-B606-5E771D536E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F95AAD52-B9A1-4F03-B606-5E771D536E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F95AAD52-B9A1-4F03-B606-5E771D536E3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
