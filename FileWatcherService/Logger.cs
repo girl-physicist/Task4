@@ -15,7 +15,7 @@ namespace FileWatcherService
         private bool _enabled = true;
             public Logger()
             {
-                _watcher = new FileSystemWatcher("Temp");
+                _watcher = new FileSystemWatcher("C:\\Temp");
                 _watcher.Deleted += Watcher_Deleted;
                 _watcher.Created += Watcher_Created;
                 _watcher.Changed += Watcher_Changed;
@@ -68,7 +68,7 @@ namespace FileWatcherService
             {
                 lock (_obj)
                 {
-                    using (StreamWriter writer = new StreamWriter("templog.txt", true))
+                    using (StreamWriter writer = new StreamWriter("C:\\templog.txt", true))
                     {
                         writer.WriteLine($"{DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")} файл {filePath} был {fileEvent}");
                         writer.Flush();
