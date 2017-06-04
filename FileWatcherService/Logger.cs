@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace FileWatcherService
+namespace WatcherService
 {
   public  class Logger
     {
@@ -38,28 +34,28 @@ namespace FileWatcherService
             // переименование файлов
             private void Watcher_Renamed(object sender, RenamedEventArgs e)
             {
-                string fileEvent = "переименован в " + e.FullPath;
+                string fileEvent = "renamed to " + e.FullPath;
                 string filePath = e.OldFullPath;
                 RecordEntry(fileEvent, filePath);
             }
             // изменение файлов
             private void Watcher_Changed(object sender, FileSystemEventArgs e)
             {
-                string fileEvent = "изменен";
+                string fileEvent = "amended";
                 string filePath = e.FullPath;
                 RecordEntry(fileEvent, filePath);
             }
             // создание файлов
             private void Watcher_Created(object sender, FileSystemEventArgs e)
             {
-                string fileEvent = "создан";
+                string fileEvent = "created";
                 string filePath = e.FullPath;
                 RecordEntry(fileEvent, filePath);
             }
             // удаление файлов
             private void Watcher_Deleted(object sender, FileSystemEventArgs e)
             {
-                string fileEvent = "удален";
+                string fileEvent = "deleted";
                 string filePath = e.FullPath;
                 RecordEntry(fileEvent, filePath);
             }
@@ -70,7 +66,7 @@ namespace FileWatcherService
                 {
                     using (StreamWriter writer = new StreamWriter("C:\\templog.txt", true))
                     {
-                        writer.WriteLine($"{DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")} файл {filePath} был {fileEvent}");
+                        writer.WriteLine($"{DateTime.Now:dd/MM/yyyy hh:mm:ss} file {filePath} was {fileEvent}");
                         writer.Flush();
                     }
                 }

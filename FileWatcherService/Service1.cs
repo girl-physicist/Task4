@@ -1,7 +1,7 @@
 ﻿using System.ServiceProcess;
 using System.Threading;
 
-namespace FileWatcherService
+namespace WatcherService
 {
     public partial class Service1 : ServiceBase
     {

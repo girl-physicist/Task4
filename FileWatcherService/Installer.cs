@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ServiceProcess;
 
-namespace FileWatcherService
+namespace WatcherService
 {
     [RunInstaller(true)]
     public partial class Installer : System.Configuration.Install.Installer

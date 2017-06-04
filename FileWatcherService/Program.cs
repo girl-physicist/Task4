@@ -1,6 +1,6 @@
 ﻿using System.ServiceProcess;
 
-namespace FileWatcherService
+namespace WatcherService
 {
     static class Program
     {
