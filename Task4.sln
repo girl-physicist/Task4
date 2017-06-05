@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatcherDAL", "FileWatch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseHandler", "DatabaseHandler\DatabaseHandler.csproj", "{D0E58053-2FA8-4F79-9ADA-80510D84883A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0E58053-2FA8-4F79-9ADA-80510D84883A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E58053-2FA8-4F79-9ADA-80510D84883A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0E58053-2FA8-4F79-9ADA-80510D84883A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0E58053-2FA8-4F79-9ADA-80510D84883A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
