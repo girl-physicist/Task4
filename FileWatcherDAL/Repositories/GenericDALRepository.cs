@@ -16,7 +16,8 @@ namespace FileWatcherDAL.Repositories
         where Entity : class
     {
         protected Context _context;
-        public GenericDALRepository(IDataContextFactory<Context> factory)
+
+        protected GenericDALRepository(IDataContextFactory<Context> factory)
         {
             _context = factory.ContextObject;
         }
@@ -82,21 +83,24 @@ namespace FileWatcherDAL.Repositories
                 Dispose();
             }
         }
-
-        public abstract void Remove(DTO obj);
-
-        public virtual  void Remove(DTO obj,Entity entity)
+        public IEnumerable<Entity> FirstOrDefault(System.Linq.Expressions.Expression<Func<Entity, bool>> condition)
         {
-
-            if (entity != null)
-            {
-                _context.Set<Entity>().Remove(entity);
-            }
-            else
-            {
-                throw new ArgumentException("Incorrect argument!!!");
-            }
+            
+          throw new NotImplementedException();
         }
+        public abstract void Remove(DTO obj);
+        //public virtual  void Remove(DTO obj)
+        //{
+        //   var entity = _context.Set<Entity>().FirstOrDefault(x => x.Id == obj.Id);
+        //    if (entity != null)
+        //    {
+        //        _context.Set<Entity>().Remove(entity);
+        //    }
+        //    else
+        //    {
+        //        throw new ArgumentException("Incorrect argument!!!");
+        //    }
+        //}
         public abstract void Update(DTO obj);
         public abstract Entity GetEntity(DTO source);
         public abstract Entity GetEntityNameById(int id);

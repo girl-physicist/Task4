@@ -11,15 +11,11 @@ namespace FileWatcherDAL.Repositories
     {
         void Add(DTO obj);
         void Remove(DTO obj);
-        IEnumerable<DTO> GetAll();
-        IEnumerable<DTO> FirstOrDefault(Expression<Func<DTO, bool>> condition);
-        IEnumerable<DTO> GetMany(Expression<Func<DTO, bool>> condition);
         void SaveChanges();
         Entity ToEntity(DTO source);
         void Update(DTO obj);
         Entity GetEntity(DTO source);
         Entity GetEntityNameById(int id);
         IEnumerable<DTO> Items { get; }
-
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FileWatcherDAL.Models
 {
-   public class Order
+   public class OrderDTO
     {
         public int Id { get; set; }
         public string OrderDate { get; set; }

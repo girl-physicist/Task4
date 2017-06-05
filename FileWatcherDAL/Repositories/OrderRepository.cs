@@ -1,13 +1,15 @@
 ﻿using FileWatcherDAL.Models;
 using AutoMapper;
+using FileWatcherDAL.ContextFactory;
+using FileWatcherModel;
 
 namespace FileWatcherDAL.Repositories
 {
-    public class OrderRepository
+    public class OrderRepository:GenericDALRepository<OrderDTO,Order,SaleInfoEntities>
     {
-        public void Add(Order order)
+        public new void Add(OrderDTO order)
         {
-            using (var dc = new FileWatcherModel.SaleInfoEntities())
+            using (var dc = new SaleInfoEntities())
             {
                 //var a = new FileWatcherModel.Order()
                 //{
@@ -16,10 +18,34 @@ namespace FileWatcherDAL.Repositories
                 //};
                 //dc.OrderSet.Add(a);
                 //dc.SaveChanges();
-                Mapper.Initialize(cfg =>cfg.CreateMap<Order, FileWatcherModel.Order>());
-                dc.OrderSet.Add(Mapper.Map<Order, FileWatcherModel.Order>(order));
+                Mapper.Initialize(cfg =>cfg.CreateMap<OrderDTO, FileWatcherModel.Order>());
+                dc.OrderSet.Add(Mapper.Map<OrderDTO, FileWatcherModel.Order>(order));
                 dc.SaveChanges();
             }
+        }
+
+        public override void Remove(OrderDTO obj)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Update(OrderDTO obj)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override Order GetEntity(OrderDTO source)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override Order GetEntityNameById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public OrderRepository(IDataContextFactory<SaleInfoEntities> factory) : base(factory)
+        {
         }
     }
 }

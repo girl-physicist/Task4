@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatcherModel", "FileWat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatcherDAL", "FileWatcherDAL\FileWatcherDAL.csproj", "{15C04A84-2E28-413C-9057-8A5F7DB248B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{15C04A84-2E28-413C-9057-8A5F7DB248B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15C04A84-2E28-413C-9057-8A5F7DB248B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15C04A84-2E28-413C-9057-8A5F7DB248B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75C569B-2440-4AE7-BE4A-CCD2F4EE4FCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
