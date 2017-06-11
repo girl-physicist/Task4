@@ -3,7 +3,7 @@ using FileWatcherDAL.Models;
 using FileWatcherDAL.Repositories;
 using FileWatcherModel;
 
-namespace DatabaseHandler
+namespace FileWatcherManager
 {
     public class DatabaseHandler
     {
@@ -24,22 +24,31 @@ namespace DatabaseHandler
         {
             lock (this)
             {
-                var newManager = new ManagerDAL { ManagerName = sale.ManagerName };
-                var manager = _managerRepository.GetEntity(newManager, x => x.Id == newManager.Id);
+                var newManager = new ManagerDAL {ManagerName = sale.ManagerName};
+                var manager = _managerRepository.GetEntity(newManager, x => x.ManagerName == newManager.ManagerName);
                 if (manager == null)
                 {
                     _managerRepository.Add(newManager);
                     _managerRepository.SaveChanges();
-                    manager = _managerRepository.GetEntity(newManager, x => x.Id == newManager.Id);
+                    manager = _managerRepository.GetEntity(newManager, x => x.ManagerName == newManager.ManagerName);
                 }
-                var newClient = new ClientDAL { ClientName = sale.ClientName };
-                _clientRepository.Add(newClient);
-                _clientRepository.SaveChanges();
-                var client = _clientRepository.GetEntity(newClient, x => x.Id == newClient.Id);
-                var newProduct = new ProductDAL { ProductName = sale.ProductName, ProductCost = sale.ProductCost };
-                _productRepository.Add(newProduct);
-                _productRepository.SaveChanges();
-                var product = _productRepository.GetEntity(newProduct, x => x.Id == newClient.Id);
+                var newClient = new ClientDAL {ClientName = sale.ClientName};
+                var client = _clientRepository.GetEntity(newClient, x => x.ClientName == newClient.ClientName);
+                if (client == null)
+                {
+                    _clientRepository.Add(newClient);
+                    _clientRepository.SaveChanges();
+                    client = _clientRepository.GetEntity(newClient, x => x.ClientName == newClient.ClientName);
+                }
+
+                var newProduct = new ProductDAL {ProductName = sale.ProductName, ProductCost = sale.ProductCost};
+                var product = _productRepository.GetEntity(newProduct, x => x.ProductName == newProduct.ProductName);
+                if(product == null)
+                {
+                    _productRepository.Add(newProduct);
+                    _productRepository.SaveChanges();
+                    product = _productRepository.GetEntity(newProduct, x => x.ProductName == newProduct.ProductName);
+                }
                 var saleInfo = new OrderDAL
                 {
                     OrderDate = sale.SaleDate,

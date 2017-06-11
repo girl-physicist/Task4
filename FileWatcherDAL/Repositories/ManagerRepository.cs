@@ -12,12 +12,11 @@ using Manager = FileWatcherModel.Manager;
 
 namespace FileWatcherDAL.Repositories
 {
-  public  class ManagerRepository:GenericDALRepository<ManagerDAL, Manager, SaleInfoEntities>
+    public class ManagerRepository : GenericDALRepository<ManagerDAL, Manager, SaleInfoEntities>
     {
-        public ManagerRepository(IDataContextFactory< SaleInfoEntities> factory) : base(factory)
+        public ManagerRepository(IDataContextFactory<SaleInfoEntities> factory) : base(factory)
         {
         }
-        
         public override void Update(ManagerDAL obj)
         {
             var entity = _context.Set<Manager>().FirstOrDefault(x => x.ManagerName == obj.ManagerName);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace DatabaseHandler
+namespace FileWatcherManager
 {
    public class Parser
     {
@@ -26,7 +26,6 @@ namespace DatabaseHandler
             }
             catch (Exception e)
             {
-                // Let the user know what went wrong.
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }

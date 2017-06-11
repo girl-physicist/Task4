@@ -1,6 +1,6 @@
-﻿namespace DatabaseHandler
+﻿namespace FileWatcherManager
 {
-   public class Recorder
+    public class Recorder
     {
         private DatabaseHandler _dbHandler;
         private Parser _parser;
@@ -17,5 +17,5 @@
                 _dbHandler.AddToDatabase(record);
             }
         }
-       }
+    }
 }

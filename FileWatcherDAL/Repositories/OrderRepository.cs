@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
 using FileWatcherDAL.Models;
-using AutoMapper;
 using FileWatcherDAL.ContextFactory;
 using FileWatcherModel;
 
@@ -12,6 +8,9 @@ namespace FileWatcherDAL.Repositories
 {
     public class OrderRepository : GenericDALRepository<OrderDAL, Order, SaleInfoEntities>
     {
+        public OrderRepository(IDataContextFactory<SaleInfoEntities> factory) : base(factory)
+        {
+        }
         public override void Update(OrderDAL obj)
         {
             var entity = _context.Set<Order>().FirstOrDefault(x => x.Id == obj.Id);
@@ -26,9 +25,6 @@ namespace FileWatcherDAL.Repositories
             {
                 throw new ArgumentException("Incorrect argument!!!");
             }
-        }
-       public OrderRepository(IDataContextFactory<SaleInfoEntities> factory) : base(factory)
-        {
         }
     }
 }

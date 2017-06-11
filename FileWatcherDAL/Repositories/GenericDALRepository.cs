@@ -4,12 +4,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
 using FileWatcherDAL.ContextFactory;
-using FileWatcherModel;
 
 namespace FileWatcherDAL.Repositories
 {
     public abstract class GenericDALRepository<T, K, Context> : IRepository<T, K>
-        where T : class 
+        where T : class
         where K : class
         where Context : System.Data.Entity.DbContext
     {
@@ -33,7 +32,6 @@ namespace FileWatcherDAL.Repositories
         public void Add(T obj)
         {
             _context.Set<K>().Add(ToEntity(obj));
-            _context.SaveChanges();
         }
         public void SaveChanges()
         {
@@ -68,10 +66,8 @@ namespace FileWatcherDAL.Repositories
                 Dispose();
             }
         }
-        // public abstract void Remove(T obj);
         public virtual void Remove(T obj, Expression<Func<K, bool>> predicate)
         {
-            //predicate = (x => x.Id == item.Id);
             var entity = _context.Set<K>().FirstOrDefault(predicate);
             if (entity != null)
             {
@@ -84,12 +80,6 @@ namespace FileWatcherDAL.Repositories
         }
         public virtual K GetEntity(T obj, Expression<Func<K, bool>> predicate)
         {
-            // predicate= x => x.Id == obj.Id;
-            return _context.Set<K>().FirstOrDefault(predicate);
-        }
-        public virtual K GetEntityNameById(int id, Expression<Func<K, bool>> predicate)
-        {
-            // predicate = x => x.Id == id;
             return _context.Set<K>().FirstOrDefault(predicate);
         }
         public abstract void Update(T obj);

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.ServiceProcess;
-
-namespace WatcherService
+﻿namespace FileWatcherService
 {
    partial class Service1
     {

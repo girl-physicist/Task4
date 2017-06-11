@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileWatcherDAL.Repositories
 {
@@ -15,10 +12,6 @@ namespace FileWatcherDAL.Repositories
         K ToEntity(T source);
         void Update(T obj);
         K GetEntity(T source, Expression<Func<K, bool>> predicate);
-        K GetEntityNameById(int id, Expression<Func<K, bool>> predicate);
-       IEnumerable<T> Items { get; }
-        //K GetEntity(T source);
-        //K GetEntityNameById(int id);
-        //void Remove(T obj);
+        IEnumerable<T> Items { get; }
     }
 }

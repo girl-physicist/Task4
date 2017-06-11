@@ -1,4 +1,4 @@
-﻿namespace DatabaseHandler
+﻿namespace FileWatcherManager
 {
    public class SaleInfo
     {

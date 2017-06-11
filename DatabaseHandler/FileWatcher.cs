@@ -3,27 +3,25 @@ using System.Configuration;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace DatabaseHandler
+namespace FileWatcherManager
 {
    public class FileWatcher
     {
-        private Recorder _recorder;
-        private FileSystemWatcher _fileWatcher;
+        private readonly Recorder _recorder;
+        private readonly FileSystemWatcher _fileWatcher;
         private Task _task;
        
         public FileWatcher()
         {
             _recorder = new Recorder();
-            _fileWatcher = new FileSystemWatcher();
-            _fileWatcher.Path = ConfigurationManager.AppSettings["Path1"];
-            _fileWatcher.Filter = "*.csv";
-            _fileWatcher.NotifyFilter = NotifyFilters.FileName;
-
-            //_fileWatcher.Changed += OnChanged;
-            //_fileWatcher.Created +=OnChanged;
-            _fileWatcher.EnableRaisingEvents = true;
+            _fileWatcher = new FileSystemWatcher
+            {
+                Path = ConfigurationManager.AppSettings["Path1"],
+                Filter = "*.csv",
+                NotifyFilter = NotifyFilters.FileName,
+                EnableRaisingEvents = true
+            };
         }
-      
         public void OnChanged(object source, FileSystemEventArgs e)
         {
             _task = new Task(() => CallParse(source, e));
@@ -31,14 +29,12 @@ namespace DatabaseHandler
         }
         public void CallParse(object source, FileSystemEventArgs e)
         {
-            string path;
-            path = e.FullPath;
+            var path = e.FullPath;
             _recorder.SaveRecords(path);
         }
         public void Dispose()
         {
             _fileWatcher.Dispose();
         }
-       
     }
 }

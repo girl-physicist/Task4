@@ -47,18 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBase\DatabaseHandler.cs" />
-    <Compile Include="DataBase\Recorder.cs" />
-    <Compile Include="DataBase\SaleInfo.cs" />
-    <Compile Include="DataBase\Watcher.cs" />
     <Compile Include="Installer.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Installer.Designer.cs">
       <DependentUpon>Installer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logger.cs" />
-    <Compile Include="DataBase\Parser.cs" />
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -77,13 +71,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FileWatcherDAL\FileWatcherDAL.csproj">
-      <Project>{15c04a84-2e28-413c-9057-8a5f7db248b9}</Project>
-      <Name>FileWatcherDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileWatcherModel\FileWatcherModel.csproj">
-      <Project>{90ad7ce1-3251-47d3-9d48-f03ec40ef770}</Project>
-      <Name>FileWatcherModel</Name>
+    <ProjectReference Include="..\DatabaseHandler\FileWatcherManager.csproj">
+      <Project>{d0e58053-2fa8-4f79-9ada-80510d84883a}</Project>
+      <Name>FileWatcherManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

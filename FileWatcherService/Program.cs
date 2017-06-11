@@ -1,4 +1,5 @@
 ﻿using System.ServiceProcess;
+using FileWatcherService;
 
 namespace WatcherService
 {
