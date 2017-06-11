@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace FileWatcherDAL.Repositories
 {
-    public interface IRepository<DTO, Entity> : IDisposable
+    public interface IRepository<T, K> : IDisposable
     {
-        void Add(DTO obj);
-        void Remove(DTO obj);
+        void Add(T obj);
+        void Remove(T obj, Expression<Func<K, bool>> predicate);
         void SaveChanges();
-        Entity ToEntity(DTO source);
-        void Update(DTO obj);
-        Entity GetEntity(DTO source);
-        Entity GetEntityNameById(int id);
-        IEnumerable<DTO> Items { get; }
+        K ToEntity(T source);
+        void Update(T obj);
+        K GetEntity(T source, Expression<Func<K, bool>> predicate);
+        K GetEntityNameById(int id, Expression<Func<K, bool>> predicate);
+       IEnumerable<T> Items { get; }
+        //K GetEntity(T source);
+        //K GetEntityNameById(int id);
+        //void Remove(T obj);
     }
 }

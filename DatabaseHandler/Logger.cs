@@ -7,13 +7,15 @@ namespace DatabaseHandler
 {
   public  class Logger
     {
+
         private readonly FileSystemWatcher _watcher;
-        private Recorder _recorder;
+        private readonly FileWatcher _fileWatcher;
         private readonly object _obj = new object();
         private bool _enabled = true;
             public Logger()
             {
             _watcher = new FileSystemWatcher();
+            _fileWatcher = new FileWatcher();
             _watcher.Path = ConfigurationManager.AppSettings["Path1"];
             _watcher.Filter = "*.csv";
             _watcher.NotifyFilter = NotifyFilters.FileName;
@@ -23,6 +25,7 @@ namespace DatabaseHandler
                 _watcher.Deleted += Watcher_Deleted;
                 _watcher.Created += Watcher_Created;
                 _watcher.Changed += Watcher_Changed;
+                _watcher.Created += _fileWatcher.OnChanged;
                 _watcher.Renamed += Watcher_Renamed;
             }
 

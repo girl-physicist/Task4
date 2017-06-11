@@ -1,65 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 using AutoMapper;
 using FileWatcherDAL.ContextFactory;
-using FileWatcherDAL.Models;
+using FileWatcherModel;
 
 namespace FileWatcherDAL.Repositories
 {
-    public abstract class GenericDALRepository<DTO, Entity, Context>
-        : IRepository<DTO, Entity>
-        where DTO : class
+    public abstract class GenericDALRepository<T, K, Context> : IRepository<T, K>
+        where T : class 
+        where K : class
         where Context : System.Data.Entity.DbContext
-        where Entity : class
     {
         protected Context _context;
-
         protected GenericDALRepository(IDataContextFactory<Context> factory)
         {
             _context = factory.ContextObject;
         }
-        public Entity ToEntity(DTO source)
+        public K ToEntity(T source)
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<DTO, Entity>());
-            var entity = Mapper.Map<DTO, Entity>(source);
+            Mapper.Initialize(cfg => cfg.CreateMap<T, K>());
+            var entity = Mapper.Map<T, K>(source);
             return entity;
         }
-        public DTO ToObject(Entity source)
+        public T ToObject(K source)
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Entity, DTO>());
-            var Object = Mapper.Map<Entity, DTO>(source);
+            Mapper.Initialize(cfg => cfg.CreateMap<K, T>());
+            var Object = Mapper.Map<K, T>(source);
             return Object;
         }
-        public void Add(DTO obj)
+        public void Add(T obj)
         {
-           _context.Set<Entity>().Add(ToEntity(obj));
-           _context.SaveChanges();
-            
-            //Entity entity = ToEntity(obj);
-
-            //var temp = _context.Set<Entity>().Attach(entity);
-            //if (temp != null)
-            //{
-            //    _context.Entry(temp).State = System.Data.Entity.EntityState.Detached;
-            //}
-            //else
-            //{
-            //    _context.Set<Entity>().Add(entity);
-            //}
+            _context.Set<K>().Add(ToEntity(obj));
+            _context.SaveChanges();
         }
         public void SaveChanges()
         {
             _context.SaveChanges();
         }
-        public IEnumerable<DTO> Items
+        public IEnumerable<T> Items
         {
             get
             {
-                var b = new List<DTO>();
-                foreach (var a in _context.Set<Entity>().Select(x => x))
+                var b = new List<T>();
+                foreach (var a in _context.Set<K>().Select(x => x))
                 {
                     b.Add(ToObject(a));
                 }
@@ -83,28 +68,30 @@ namespace FileWatcherDAL.Repositories
                 Dispose();
             }
         }
-        public IEnumerable<Entity> FirstOrDefault(System.Linq.Expressions.Expression<Func<Entity, bool>> condition)
+        // public abstract void Remove(T obj);
+        public virtual void Remove(T obj, Expression<Func<K, bool>> predicate)
         {
-            
-          throw new NotImplementedException();
+            //predicate = (x => x.Id == item.Id);
+            var entity = _context.Set<K>().FirstOrDefault(predicate);
+            if (entity != null)
+            {
+                _context.Set<K>().Remove(entity);
+            }
+            else
+            {
+                throw new ArgumentException("Incorrect argument!!!");
+            }
         }
-        public abstract void Remove(DTO obj);
-        //public virtual  void Remove(DTO obj)
-        //{
-        //   var entity = _context.Set<Entity>().FirstOrDefault(x => x.Id == obj.Id);
-        //    if (entity != null)
-        //    {
-        //        _context.Set<Entity>().Remove(entity);
-        //    }
-        //    else
-        //    {
-        //        throw new ArgumentException("Incorrect argument!!!");
-        //    }
-        //}
-        public abstract void Update(DTO obj);
-        public abstract Entity GetEntity(DTO source);
-        public abstract Entity GetEntityNameById(int id);
-
-        
+        public virtual K GetEntity(T obj, Expression<Func<K, bool>> predicate)
+        {
+            // predicate= x => x.Id == obj.Id;
+            return _context.Set<K>().FirstOrDefault(predicate);
+        }
+        public virtual K GetEntityNameById(int id, Expression<Func<K, bool>> predicate)
+        {
+            // predicate = x => x.Id == id;
+            return _context.Set<K>().FirstOrDefault(predicate);
+        }
+        public abstract void Update(T obj);
     }
 }

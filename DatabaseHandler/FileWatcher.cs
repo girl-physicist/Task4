@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace DatabaseHandler
 {
-   public class Watcher
+   public class FileWatcher
     {
         private Recorder _recorder;
         private FileSystemWatcher _fileWatcher;
         private Task _task;
        
-        public Watcher()
+        public FileWatcher()
         {
             _recorder = new Recorder();
             _fileWatcher = new FileSystemWatcher();
@@ -19,8 +19,8 @@ namespace DatabaseHandler
             _fileWatcher.Filter = "*.csv";
             _fileWatcher.NotifyFilter = NotifyFilters.FileName;
 
-            _fileWatcher.Changed += OnChanged;
-            _fileWatcher.Created +=OnChanged;
+            //_fileWatcher.Changed += OnChanged;
+            //_fileWatcher.Created +=OnChanged;
             _fileWatcher.EnableRaisingEvents = true;
         }
       

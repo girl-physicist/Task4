@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,11 @@ using FileWatcherModel;
 
 namespace FileWatcherDAL.Repositories
 {
-   public class ProductRepository:GenericDALRepository<ProductDto, Product, SaleInfoEntities>
+   public class ProductRepository:GenericDALRepository<ProductDAL, Product, SaleInfoEntities>
     {
-        public ProductRepository(IDataContextFactory<SaleInfoEntities> factory) : base(factory)
+        public override void Update(ProductDAL obj)
         {
-        }
-
-        
-        public override void Update(ProductDto obj)
-        {
-            var entity = _context.ProductSet.FirstOrDefault(x => x.ProductName == obj.ProductName);
+            var entity = _context.Set<Product>().FirstOrDefault(x => x.ProductName == obj.ProductName);
             if (entity != null)
             {
                 entity.ProductName = obj.ProductName;
@@ -30,29 +26,8 @@ namespace FileWatcherDAL.Repositories
                 throw new ArgumentException("Incorrect argument!!!");
             }
         }
-
-        public override Product GetEntity(ProductDto source)
+        public ProductRepository(IDataContextFactory<SaleInfoEntities> factory) : base(factory)
         {
-            var entity = _context.ProductSet.FirstOrDefault(x => x.ProductName == source.ProductName);
-            return entity;
-        }
-
-        public override void Remove(ProductDto obj)
-        {
-            var entity = _context.ProductSet.FirstOrDefault(x => x.Id == obj.Id);
-            if (entity != null)
-            {
-                _context.ProductSet.Remove(entity);
-            }
-            else
-            {
-                throw new ArgumentException("Incorrect argument!!!");
-            }
-        }
-        public override Product GetEntityNameById(int id)
-        {
-            var entity = _context.ProductSet.FirstOrDefault(x => x.Id == id);
-            return entity;
         }
     }
 }

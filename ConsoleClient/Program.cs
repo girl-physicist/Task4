@@ -13,8 +13,8 @@ namespace ConsoleClient
             //recorder.SaveRecords("Ivanov_19112012.csv");
           
             cs.OnStart();
-            cs.OnStop();
-            Console.Read();
+          
+          
         }
     }
 }

@@ -52,10 +52,10 @@
   <ItemGroup>
     <Compile Include="ContextFactory\FileWatcherContextFactory.cs" />
     <Compile Include="ContextFactory\IDataContextFactory.cs" />
-    <Compile Include="Models\ClientDTO.cs" />
-    <Compile Include="Models\ManagerDTO.cs" />
-    <Compile Include="Models\OrderDTO.cs" />
-    <Compile Include="Models\ProductDto.cs" />
+    <Compile Include="Models\ClientDal.cs" />
+    <Compile Include="Models\ManagerDAL.cs" />
+    <Compile Include="Models\OrderDAL.cs" />
+    <Compile Include="Models\ProductDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\GenericDALRepository.cs" />

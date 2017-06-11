@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace FileWatcherDAL.Models
 {
-  public  class ProductDto
+    public class ClientDAL
     {
         public int Id { get; set; }
-        public string ProductName { get; set; }
-        public string ProductCost { get; set; }
-        public ICollection<OrderDTO> OrderSet { get; set; }
+        public string ClientName { get; set; }
+        public ICollection<OrderDAL> OrderSet { get; set; }
     }
 }

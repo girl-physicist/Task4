@@ -58,9 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseHandler\DatabaseHandler.csproj">
+    <ProjectReference Include="..\DatabaseHandler\FileWatcherManager.csproj">
       <Project>{D0E58053-2FA8-4F79-9ADA-80510D84883A}</Project>
-      <Name>DatabaseHandler</Name>
+      <Name>FileWatcherManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\FileWatcherDAL\FileWatcherDAL.csproj">
       <Project>{15c04a84-2e28-413c-9057-8a5f7db248b9}</Project>
