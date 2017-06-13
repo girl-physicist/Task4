@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FileWatcherDAL.ContextFactory;
 using FileWatcherDAL.Models;
 using FileWatcherModel;
-using Manager = FileWatcherModel.Manager;
 
 
 namespace FileWatcherDAL.Repositories

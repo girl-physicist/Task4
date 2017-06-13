@@ -73,7 +73,8 @@ namespace FileWatcherManager
         {
             lock (_obj)
             {
-                using (StreamWriter writer = new StreamWriter("C:\\templog.txt", true))
+                string path = ConfigurationManager.AppSettings["LogFile"];
+                using (StreamWriter writer = new StreamWriter(path, true))
                 {
                     writer.WriteLine($"{DateTime.Now:dd/MM/yyyy hh:mm:ss} file {filePath} was {fileEvent}");
                     writer.Flush();

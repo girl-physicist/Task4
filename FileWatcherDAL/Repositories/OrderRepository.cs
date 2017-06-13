@@ -20,7 +20,6 @@ namespace FileWatcherDAL.Repositories
                 entity.Manager_Id = obj.Manager_Id;
                 entity.Client_Id = obj.Client_Id;
                 entity.Product_Id = obj.Product_Id;
-            }
             else
             {
                 throw new ArgumentException("Incorrect argument!!!");

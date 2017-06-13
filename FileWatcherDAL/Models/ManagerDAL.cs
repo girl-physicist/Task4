@@ -2,9 +2,8 @@
 
 namespace FileWatcherDAL.Models
 {
-    public class ManagerDAL
+    public class ManagerDAL : DAL
     {
-        public int Id { get; set; }
         public string ManagerName { get; set; }
         public ICollection<OrderDAL> OrderSet { get; set; }
     }

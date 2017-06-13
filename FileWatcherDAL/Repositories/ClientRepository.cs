@@ -20,7 +20,6 @@ namespace FileWatcherDAL.Repositories
             }
             else
             {
-                //Add try/catch
                 throw new ArgumentException("Incorrect argument!!!");
             }
         }

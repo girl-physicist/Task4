@@ -26,8 +26,7 @@ namespace FileWatcherManager
             }
             catch (Exception e)
             {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
+                Console.WriteLine("The file could not be read: {0}", e.Message);
             }
             return records;
         }

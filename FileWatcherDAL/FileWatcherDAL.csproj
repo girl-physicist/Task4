@@ -53,6 +53,7 @@
     <Compile Include="ContextFactory\FileWatcherContextFactory.cs" />
     <Compile Include="ContextFactory\IDataContextFactory.cs" />
     <Compile Include="Models\ClientDal.cs" />
+    <Compile Include="Models\DAL.cs" />
     <Compile Include="Models\ManagerDAL.cs" />
     <Compile Include="Models\OrderDAL.cs" />
     <Compile Include="Models\ProductDAL.cs" />

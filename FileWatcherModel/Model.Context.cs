@@ -24,7 +24,12 @@ namespace FileWatcherModel
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
+        public object Set<T>()
+        {
+            throw new NotImplementedException();
+        }
+
         public DbSet<Client> ClientSet { get; set; }
         public DbSet<Manager> ManagerSet { get; set; }
         public DbSet<Order> OrderSet { get; set; }
